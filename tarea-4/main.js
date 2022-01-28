@@ -1,5 +1,5 @@
-import * as helpers from './helpers';
-import calculate from './calculator';
+import * as helpers from './helpers.js';
+import calculate from './calculator.js';
 
 let [string, stringHTML, result, resultDOM] = [
   "",
