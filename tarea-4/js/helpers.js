@@ -13,11 +13,6 @@ function convertHTML(operator) {
   return "&radic;";
 }
 
-function erase() {
-  [string, stringHTML] = [string.slice(0, -1), stringHTML.slice(0, -1)];
-  resultDOM.innerHTML = stringHTML;
-}
-
 function formatNumber(value) {
   if (Number.isInteger(value)) {
     return value;
@@ -34,10 +29,4 @@ function isContinuous(result) {
   return typeof result !== undefined ? [result, result] : ["0", "0"];
 }
 
-function reset() {
-  [string, stringHTML] = ["", ""];
-  resultDOM.innerHTML = "0";
-  result = 0;
-}
-
-export {addText, convertHTML, erase, formatNumber, isContinuous, reset}
+export {addText, convertHTML, formatNumber, isContinuous}

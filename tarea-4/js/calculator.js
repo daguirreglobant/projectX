@@ -35,7 +35,7 @@ class Calculator {
 function calculate(string) {
   let [operator, number] = [false, ""];
   const calculator = new Calculator();
-  for (element of string) {
+  for (const element of string) {
     if (isNaN(element) & (element != ".")) {
       if (operator) {
         number = parseFloat(number);
