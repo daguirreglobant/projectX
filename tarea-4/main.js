@@ -1,23 +1,16 @@
-import * as helpers from './helpers.js';
-import calculate from './calculator.js';
+import Handlers from './js/handlers.js'
 
-let [string, stringHTML, result, resultDOM] = [
-  "",
-  "",
-  undefined,
-  document.getElementById("result"),
-];
+const globalVariables = {string: "", stringHTML: "", result: undefined, resultDOM: document.getElementById("result")};
 
-function main(text) {
-  if ((string.length == 0) & isNaN(text)) {
-    [string, stringHTML] = helpers.isContinuous(result);
-  }
-  [string, stringHTML] = helpers.addText(string, stringHTML, text);
-  if (text == "=") {
-    result = calculate(string);
-    resultDOM.innerHTML = helpers.formatNumber(result);
-    [string, stringHTML] = ["", ""];
-  } else {
-    resultDOM.innerHTML = stringHTML;
-  }
-}
+const handlers = new Handlers(globalVariables);
+
+const buttonsCalculate = document.querySelectorAll(".number, .operator");
+Object.values(buttonsCalculate).map(button=>button.addEventListener("click",
+()=>button.className.split(" ")[0] == "operator" ? handlers.buttonCalculateHandler(button.id) : handlers.buttonCalculateHandler(button.textContent)
+));
+
+const buttonReset = document.querySelector(".reset");
+buttonReset.addEventListener("click", () => handlers.buttonResetHandler());
+
+const buttonErase = document.querySelector(".erase");
+buttonErase.addEventListener("click", () => handlers.buttonEraseHandler());
